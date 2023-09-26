@@ -12,7 +12,7 @@ CREATE TABLE `block` (
   `id` int(11) NOT NULL,
   `blocklist` varchar(40) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-) 
+
 
 --
 -- Dumping data for table `block`
@@ -29,8 +29,6 @@ INSERT INTO `block` (`id`, `blocklist`) VALUES
   `pin_room` varchar(50) DEFAULT NULL,
   `photo` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-) 
 --
 -- Dumping data for table `boot`
 --
@@ -40,7 +38,6 @@ INSERT INTO `block` (`id`, `blocklist`) VALUES
   `control_website` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-) 
 --
 -- Dumping data for table `clasment`
 --
@@ -49,7 +46,6 @@ INSERT INTO `block` (`id`, `blocklist`) VALUES
   `msg_content` varchar(500) DEFAULT NULL,
   `type` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-) 
 
 --
 -- Dumping data for table `messages`
@@ -61,7 +57,6 @@ CREATE TABLE `online` (
 
 --
 -- Dumping data for table `online`
-) 
 --
 
 INSERT INTO `online` (`user_id`, `number`) VALUES
@@ -70,7 +65,6 @@ INSERT INTO `online` (`user_id`, `number`) VALUES
   `classment` varchar(50) DEFAULT NULL,
   `classment_day` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-) 
 
 --
 -- Dumping data for table `person`
@@ -79,7 +73,6 @@ INSERT INTO `online` (`user_id`, `number`) VALUES
   `invation` varchar(20) DEFAULT NULL,
   `time` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-) 
 
 --
 -- Dumping data for table `record`
@@ -88,7 +81,6 @@ INSERT INTO `online` (`user_id`, `number`) VALUES
   `short_content` varchar(500) DEFAULT NULL,
   `type` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-) 
 
 --
 -- Dumping data for table `shorts`
@@ -97,7 +89,7 @@ INSERT INTO `online` (`user_id`, `number`) VALUES
   `ip` varchar(20) DEFAULT NULL,
   `time` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-) 
+
 
 --
 -- Dumping data for table `stats`
@@ -106,7 +98,7 @@ INSERT INTO `online` (`user_id`, `number`) VALUES
   `send_img_video_likes` int(11) DEFAULT NULL,
   `change_stats_likes` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-) 
+
 
 --
 -- Dumping data for table `website_control`
@@ -115,7 +107,7 @@ INSERT INTO `online` (`user_id`, `number`) VALUES
   `type` varchar(50) DEFAULT NULL,
   `word` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-) 
+
 
 --
 -- Dumping data for table `world`
