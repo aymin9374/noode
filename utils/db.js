@@ -5,7 +5,7 @@ var config = {
   host: "localhost",
   user: "root",
   password: "kK12345@@",
-  database: "chatdb_v1",
+  database: "chatdb_v2",
   connectionLimit: 10,
   charset: "utf8mb4",
 };

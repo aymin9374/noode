@@ -71,7 +71,7 @@ conn.query("select * from block", (err, docs) => {
 
 router.get("/", async function (req, res, next) {
   res.render("./index.ejs", {
-    titile: "شات بنوتة قلبي شات عراقي",
+    titile: "شات كينج الشات مصري",
   });
 
   socketApi.io.on("connect", (socket) => {
@@ -243,13 +243,11 @@ router.get("/", async function (req, res, next) {
               conn.query(query4, (err, docs1) => {
                 if (err) console.log(err);
                 else if (docs1) {
-                  socketApi.io
-                    .to(socket.id)
-                    .emit("adduser", {
-                      docs: docs1,
-                      id: socket.id,
-                      sendMsgTime: sendMsgTime,
-                    });
+                  socketApi.io.to(socket.id).emit("adduser", {
+                    docs: docs1,
+                    id: socket.id,
+                    sendMsgTime: sendMsgTime,
+                  });
                 }
               });
             }
@@ -271,13 +269,11 @@ router.get("/", async function (req, res, next) {
               conn.query(query4, (err, docs1) => {
                 if (err) console.log(err);
                 else if (docs1) {
-                  socketApi.io
-                    .to(socket.id)
-                    .emit("adduserNo", {
-                      docs: docs1,
-                      id: socket.id,
-                      sendMsgTime: sendMsgTime,
-                    });
+                  socketApi.io.to(socket.id).emit("adduserNo", {
+                    docs: docs1,
+                    id: socket.id,
+                    sendMsgTime: sendMsgTime,
+                  });
                 }
               });
             }
@@ -336,13 +332,11 @@ router.get("/", async function (req, res, next) {
         conn.query(query4, (err, docs1) => {
           if (err) console.log(err);
           else if (docs1) {
-            socketApi.io
-              .to(socket.id)
-              .emit("adduserSearch", {
-                docs: docs1,
-                id: socket.id,
-                sendMsgTime: sendMsgTime,
-              });
+            socketApi.io.to(socket.id).emit("adduserSearch", {
+              docs: docs1,
+              id: socket.id,
+              sendMsgTime: sendMsgTime,
+            });
           }
         });
       });
@@ -414,12 +408,10 @@ router.get("/", async function (req, res, next) {
       });
 
       socket.on("getusername", () => {
-        socketApi.io
-          .to(socket.id)
-          .emit("username0", {
-            username: getNameByid(socket.id),
-            id: Math.floor(Math.random() * 6000),
-          });
+        socketApi.io.to(socket.id).emit("username0", {
+          username: getNameByid(socket.id),
+          id: Math.floor(Math.random() * 6000),
+        });
       });
 
       var Array = [false];
@@ -491,11 +483,9 @@ router.get("/", async function (req, res, next) {
                     img: docsq[0].img,
                   });
                 } else {
-                  socketApi.io
-                    .to(socket.id)
-                    .emit("closePrivatemsg", {
-                      msg: "هدا المستخدم لا يقبل المحداث الخاصة",
-                    });
+                  socketApi.io.to(socket.id).emit("closePrivatemsg", {
+                    msg: "هدا المستخدم لا يقبل المحداث الخاصة",
+                  });
                 }
               }
             });
@@ -513,13 +503,11 @@ router.get("/", async function (req, res, next) {
               conn.query(query1, (err1, docs1) => {
                 if (err1) console.log(err1);
                 if (docs1 != "") {
-                  socketApi.io
-                    .to(id)
-                    .emit("backAlert", {
-                      msg: msg,
-                      name: getNameByid(socket.id),
-                      img: docs1[0].img,
-                    });
+                  socketApi.io.to(id).emit("backAlert", {
+                    msg: msg,
+                    name: getNameByid(socket.id),
+                    img: docs1[0].img,
+                  });
                 }
               });
             } else {
@@ -589,15 +577,13 @@ router.get("/", async function (req, res, next) {
             conn.query(hetimg, (err1, docs1) => {
               if (err) console.log(err1);
               if (docs1 != "") {
-                socketApi.io
-                  .to(socket.id)
-                  .emit("resChatP", {
-                    docs: docs,
-                    name: getNameByid(name),
-                    socket: socket.id,
-                    img: docs1[0].img,
-                    id: name,
-                  });
+                socketApi.io.to(socket.id).emit("resChatP", {
+                  docs: docs,
+                  name: getNameByid(name),
+                  socket: socket.id,
+                  img: docs1[0].img,
+                  id: name,
+                });
                 //socketApi.io.to(name).emit('chekcMessanger', ({ docs: docs, name: getNameByid(name), socket: socket.id, img: docs1[0].img, id: socket.id }));
               } else {
                 setTimeout(() => {
@@ -629,36 +615,30 @@ router.get("/", async function (req, res, next) {
             conn.query(hetimg, (err1, docs1) => {
               if (err) console.log(err1);
               if (docs1 != "" && docs1[0] != undefined) {
-                socketApi.io
-                  .to(socket.id)
-                  .emit("resChat", {
-                    docs: docs,
-                    name: getNameByid(name),
-                    socket: socket.id,
-                    img: docs1[0].img,
-                    id: name,
-                  });
-                socketApi.io
-                  .to(name)
-                  .emit("chekcMessanger", {
-                    docs: docs,
-                    name: getNameByid(name),
-                    socket: socket.id,
-                    img: docs1[0].img,
-                    id: socket.id,
-                  });
+                socketApi.io.to(socket.id).emit("resChat", {
+                  docs: docs,
+                  name: getNameByid(name),
+                  socket: socket.id,
+                  img: docs1[0].img,
+                  id: name,
+                });
+                socketApi.io.to(name).emit("chekcMessanger", {
+                  docs: docs,
+                  name: getNameByid(name),
+                  socket: socket.id,
+                  img: docs1[0].img,
+                  id: socket.id,
+                });
               } else {
                 setTimeout(() => {
                   if (docs1 != "" && docs1[0] != undefined) {
-                    socketApi.io
-                      .to(name)
-                      .emit("chekcMessanger", {
-                        docs: docs,
-                        name: getNameByid(name),
-                        socket: socket.id,
-                        img: docs1[0].img,
-                        id: socket.id,
-                      });
+                    socketApi.io.to(name).emit("chekcMessanger", {
+                      docs: docs,
+                      name: getNameByid(name),
+                      socket: socket.id,
+                      img: docs1[0].img,
+                      id: socket.id,
+                    });
                   }
                 }, 1000);
               }
@@ -695,14 +675,12 @@ router.get("/", async function (req, res, next) {
                     conn.query(query2, (err2, docs2) => {
                       if (err2) console.log(err2);
                       if (docs2 != "") {
-                        socketApi.io
-                          .to(socket.id)
-                          .emit("updateLikeslive", {
-                            likes: docs1[0].likes,
-                            id: id,
-                            name: docs0[0].name,
-                            img: docs0[0].img,
-                          });
+                        socketApi.io.to(socket.id).emit("updateLikeslive", {
+                          likes: docs1[0].likes,
+                          id: id,
+                          name: docs0[0].name,
+                          img: docs0[0].img,
+                        });
                         socketApi.io
                           .to(docs2[0].user_id)
                           .emit("updateLikesliveNo", {
@@ -732,15 +710,13 @@ router.get("/", async function (req, res, next) {
             conn.query(hetimg, (err1, docs1) => {
               if (err) console.log(err1);
               if (docs1 != "") {
-                socketApi.io
-                  .to([socket.id, name])
-                  .emit("resChatUP", {
-                    docs: docs,
-                    name: getNameByid(name),
-                    socket: socket.id,
-                    img: docs1[0].img,
-                    id: name,
-                  });
+                socketApi.io.to([socket.id, name]).emit("resChatUP", {
+                  docs: docs,
+                  name: getNameByid(name),
+                  socket: socket.id,
+                  img: docs1[0].img,
+                  id: name,
+                });
                 // socketApi.io.to([name]).emit('resChat', ({ docs: docs, name: getNameByid(name), socket: socket.id }));
               }
             });
@@ -830,9 +806,10 @@ router.get("/", async function (req, res, next) {
       });
 
       socket.on("getemojey", (d) => {
-        fs.readFile("./public/Gift", (err, docs) => {
-          if (err) console.log(err);
+        fs.readFile("./public/Gift.js", (err, docs) => {
+          if (err) console.log(err, "emojey error");
           else if (docs) {
+            console.log(docs, "emojey");
             socketApi.io.to(socket.id).emit("sendemojeyback", docs);
           }
         });
@@ -895,8 +872,9 @@ router.get("/", async function (req, res, next) {
 
       socket.on("getgift", (d) => {
         fs.readFile("./public/Gift", (err, docs) => {
-          if (err) console.log(err);
+          if (err) console.log(err, "giterr");
           else if (docs) {
+            console.log(docs, "docs gift");
             socketApi.io.to(socket.id).emit("sendgiftback", docs);
           }
         });
@@ -1073,13 +1051,11 @@ router.get("/", async function (req, res, next) {
       conn.query(query4, (err, docs1) => {
         if (err) console.log(err);
         else if (docs1) {
-          socketApi.io
-            .to(socket.id)
-            .emit("adduser", {
-              docs: docs1,
-              id: socket.id,
-              sendMsgTime: sendMsgTime,
-            });
+          socketApi.io.to(socket.id).emit("adduser", {
+            docs: docs1,
+            id: socket.id,
+            sendMsgTime: sendMsgTime,
+          });
         }
       });
       var newone = true;
@@ -1371,6 +1347,7 @@ router.get("/", async function (req, res, next) {
           if (err) console.log(err);
           else socketApi.io.to(socket.id).emit("roomLength", docs[0].length);
         });
+        console.log("jooinddd");
         socket.join("الغرفة العامة رقم 1");
         socket.emit("generateIcons");
         newone = true;
@@ -1393,14 +1370,15 @@ router.get("/", async function (req, res, next) {
                     }
                   );
 
-                  storeinBrowser.set("token", token);
+                  const tokenval = storeinBrowser.set("token", token);
+                  console.log(tokenval, "token");
                 }
               }
             }
           }
         );
-
         socket.on("vToken", () => {
+          console.log(allow, "allow");
           if (allow) {
             socketApi.io
               .to(socket.id)
@@ -1414,12 +1392,10 @@ router.get("/", async function (req, res, next) {
             if (err) console.log(err);
             if (docs) {
               socketApi.io.to(id).emit("confirmeCall", div);
-              socketApi.io
-                .to(socket.id)
-                .emit("confirmeCallUser", {
-                  name: docs[0].name,
-                  img: docs[0].img,
-                });
+              socketApi.io.to(socket.id).emit("confirmeCallUser", {
+                name: docs[0].name,
+                img: docs[0].img,
+              });
             }
           });
         });
@@ -1646,30 +1622,46 @@ router.get("/", async function (req, res, next) {
           }
         });
 
-        setTimeout(() => {
-          socketApi.io
-            .to(socket.id)
-            .emit("welcomeMsg", {
-              msg: "مرحبا بزوارنا الكرام في شات بنونة قلبي",
-              rand: Math.floor(Math.random() * 6000),
-            });
-        }, 1000);
-        setTimeout(() => {
-          socketApi.io
-            .to(socket.id)
-            .emit("welcomeMsg", {
-              msg: "زوٍإْرنـَا الكرٍإْم إْهلا وسهلا‘ بكمٌ في شـات [ رونزا_ شات بنوته تايم ] ، نتمنا‘ لكمٌ قضا‘ء اجمل الاوٍقا‘ت معنا‘ ـا‘لا‘دإْرٍه",
-              rand: Math.floor(Math.random() * 6000),
-            });
-        }, 2000);
-        setTimeout(() => {
-          socketApi.io
-            .to(socket.id)
-            .emit("welcomeMsg", {
-              msg: "يمنع ، منعاً باتاً كشف اي معلومات عن الزائر : واعطإءه لـ اي شخص ",
-              rand: Math.floor(Math.random() * 6000),
-            });
-        }, 3000);
+        // setTimeout(() => {
+        //   socketApi.io.to(socket.id).emit("welcomeMsg", {
+        //     msg: "مرحبا بزوارنا الكرام في شات بنونة قلبي",
+        //     rand: Math.floor(Math.random() * 6000),
+        //   });
+        // }, 1000);
+        // setTimeout(() => {
+        //   socketApi.io.to(socket.id).emit("welcomeMsg", {
+        //     msg: "زوٍإْرنـَا الكرٍإْم إْهلا وسهلا‘ بكمٌ في شـات [ رونزا_ شات بنوته تايم ] ، نتمنا‘ لكمٌ قضا‘ء اجمل الاوٍقا‘ت معنا‘ ـا‘لا‘دإْرٍه",
+        //     rand: Math.floor(Math.random() * 6000),
+        //   });
+        // }, 2000);
+        // setTimeout(() => {
+        //   socketApi.io.to(socket.id).emit("welcomeMsg", {
+        //     msg: "يمنع ، منعاً باتاً كشف اي معلومات عن الزائر : واعطإءه لـ اي شخص ",
+        //     rand: Math.floor(Math.random() * 6000),
+        //   });
+        // }, 3000);
+
+        // Fetch a random message from the database
+
+        const msgQuery = "SELECT * FROM messages ORDER BY RAND()";
+        conn.query(msgQuery, (err, results) => {
+          if (err) {
+            console.error(err);
+            return;
+          }
+
+          // Loop through the messages and send them one by one with a delay
+          results.forEach((message, index) => {
+            console.log(message);
+            setTimeout(() => {
+              socketApi.io.to(socket.id).emit("welcomeMsg", {
+                msg: message.msg_content,
+                type: message.type === "welcome" ? "الترحيب" : "الإدارة",
+                rand: Math.floor(Math.random() * 6000),
+              });
+            }, 900 * (index + 1));
+          });
+        });
         var querytrack = `
               insert into record(stats , momber 
                 , style, ip , national , device , source , invation, time) values(
@@ -1714,6 +1706,7 @@ router.get("/", async function (req, res, next) {
               var getDrapo = `select * from person where user_name = '${getNameByid(
                 socket.id
               )}'`;
+
               conn.query(getDrapo, (err, drapo) => {
                 if (err) console.log(err);
                 if (drapo) {
@@ -1755,6 +1748,7 @@ router.get("/", async function (req, res, next) {
                   '${drapo[0].ip}'
                 )
               `;
+
                   try {
                     conn.query(query2, (err, docs) => {
                       var query3 = `select * from onlinetable where user_id = '${socket.id}'`;
@@ -1883,7 +1877,11 @@ router.get("/", async function (req, res, next) {
                         var query1primes = `select * from onlinetable where user_id = '${socket.id}'`;
                         conn.query(query1primes, (errroo, docsrooo) => {
                           if (errroo) console.log(errroo);
-                          if (docsrooo) var rom = docsrooo[0].room_name;
+                          if (docsrooo) {
+                            console.log(docsrooo, "docsrooo");
+
+                            var rom = docsrooo[0].room_name;
+                          }
                           setTimeout(() => {
                             socketApi.io
                               .to(rom)
@@ -2047,6 +2045,94 @@ router.get("/", async function (req, res, next) {
 // jwt token
 
 router.get("/ids", function (req, res) {
+  var queryselecttrack = "select * from record limit 50";
+  conn.query(queryselecttrack, (err, docs) => {
+    if (docs) {
+      var querystats = "select * from stats order by user_id desc";
+      conn.query(querystats, (err1, docs1) => {
+        var queryper = "select * from person order by user_id desc";
+        conn.query(queryper, (err, docs2) => {
+          if (docs2) {
+            var queryword =
+              "select * from world order by user_id desc LIMIT 10";
+            var queryworldall = "select * from world";
+            conn.query(queryword, (err, docs3) => {
+              if (err) console.log(err);
+              if (docs) {
+                conn.query(queryworldall, (err, docs4) => {
+                  if (err) console.log(err);
+                  if (docs4) {
+                    var queryroom = "select * from room";
+                    conn.query(queryroom, (err, docs5) => {
+                      if (err) console.log(err);
+                      if (docs5) {
+                        var queryShort = "select * from shorts";
+                        conn.query(queryShort, (err, short) => {
+                          if (err) console.log(err);
+                          else if (short) {
+                            var queryMessages = "select * from messages";
+                            conn.query(queryMessages, (err, messages) => {
+                              if (err) console.log(err);
+                              else if (messages) {
+                                if (err) console.log(err);
+                                var querySelectClasement = `select * from clasment`;
+                                conn.query(
+                                  querySelectClasement,
+                                  (err, clasement) => {
+                                    if (err) console.log(err);
+                                    if (clasement) {
+                                      var bootQuery = "select * from boot";
+                                      conn.query(bootQuery, (err, boot) => {
+                                        if (err) console.log(err);
+                                        if (boot) {
+                                          res.render("./control.ejs", {
+                                            users: docs,
+                                            stats: docs1,
+                                            person: docs2,
+                                            world: docs3,
+                                            allword: docs4,
+                                            room: docs5,
+                                            short: short,
+                                            messages: messages,
+                                            clasement: clasement,
+                                            boot: boot,
+                                          });
+                                        }
+                                      });
+                                    }
+                                  }
+                                );
+                              }
+                            });
+                          }
+                        });
+                      }
+                    });
+                  }
+                });
+              }
+            });
+          }
+        });
+      });
+    }
+  });
+});
+
+// router.get("/cp/token=*", function (req, res, next) {
+//   UsersRepo.getByToken(req.params[0]).then(function (data) {
+//     if (data && VerAdminPanel(data.power)) {
+//       res.render("control.ejs");
+//     } else {
+//       res.set("Content-Type", "text/html");
+//       res.write("<h4>لاتملك صلاحيآت</h4>");
+//       res.end();
+//     }
+//   });
+// });
+
+router.get("/:token", function (req, res, next) {
+  // console.log(req.params.token, "token");
   var queryselecttrack = "select * from record limit 50";
   conn.query(queryselecttrack, (err, docs) => {
     if (docs) {

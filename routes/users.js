@@ -195,23 +195,24 @@ router.get("/createRoom", (req, res) => {
 });
 
 router.get("/createRoom2", (req, res) => {
-  var { rtopic, rabout, rwelcome, rlike, rpwda, rmax, rdel, broadcast, img } =
+  var { rtopic, rabout, rwelcome, rlike, rpwd, rmax, rdel, broadcast, img } =
     req.query;
+  console.log(req.query, "queery");
   console.log(
     rtopic,
     rabout,
     rwelcome,
     rlike,
-    rpwda,
+    rpwd,
     rmax,
     rdel,
     broadcast,
     img
   );
   var query = `insert into room(room_name , room_capacity , description , welcomemsg,
-      password , resLike , voiceLike ,  rdelو img , length) values(
+      password , resLike , voiceLike , voice, img , length) values(
         '${rtopic}','${rmax}','${rabout}','${rwelcome}','${rpwd}',
-        '${rlike}' ,${broadcast}, ${rdel}, '${img}' , 0
+        '${rlike}' ,${rdel}, ${broadcast}, '${img}' , 0
       )`;
   conn.query(query, (err, docs) => {
     if (err) console.log(err, "err one");
@@ -269,7 +270,8 @@ router.get("/search1", (req, res) => {
       conn.query(
         `select * from onlinetable where name = '${id}'`,
         (err1, docs1) => {
-          if (err1) console.log(err1);
+          console.log(docs1, "docs1");
+          if (err1) console.log(err1, "err1");
           if (docs1) {
             const query1 = `
           insert into stats(stats , momber , secondmomber , room, ip, time)
@@ -882,7 +884,7 @@ router.get("/addClasment", (req, res) => {
 router.get("/updateWebsiteControl", (req, res) => {
   var { name, title, desc, keyword, script, ct, iconscolor, automsg, hlikes } =
     req.query;
-  console.log(iconscolor);
+  console.log(req.query, "updateWebsiteControl");
   var query = `
   update website_control set name = '${name}' , title = '${title}' , description =  '${desc}' ,
   keyword='${keyword}' , script='${script}', template_color='${ct}' , icons_color='${iconscolor}' ,
@@ -900,6 +902,7 @@ router.get("/updateWebsiteControl", (req, res) => {
 
 router.get("/addBoot", (req, res) => {
   var { stats, country, desc, likes, photo, style } = req.query;
+  console.log(req.query);
   var query = `insert into boot(stats , country , style ,  descri , likes , photo) 
   value('${stats}','${country}','${desc}','${likes}','${photo}' , '${style}') `;
   conn.query(query, (err, docs) => {
