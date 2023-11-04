@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&family=Noto+Sans+Arabic:wght@900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&family=Noto+Sans+Arabic:wght@900&display=swap");
 
 * {
   padding: 0;
@@ -84,7 +84,7 @@
   width: 100%;
   height: 50px;
   padding: 3px 0px;
-  background-color: #393E45;
+  background-color: #393e45;
   color: white;
 }
 
@@ -102,7 +102,7 @@
   font-size: 19.2px !important;
   line-height: 1.4 !important;
   font-weight: 700 !important;
-  font-family: 'Noto Naskh Arabic', serif;
+  font-family: "Noto Naskh Arabic", serif;
 }
 
 .referech-btn {
@@ -132,7 +132,6 @@ i {
   border-radius: 4px;
 }
 
-
 .part2-header-img {
   width: 100%;
   height: 25px;
@@ -157,7 +156,7 @@ i {
   margin: auto;
   height: 23px;
   padding: 2px 4px;
-  background-color: #393E45;
+  background-color: #393e45;
   margin-top: 8px;
   font-weight: 600;
   text-align: center;
@@ -176,7 +175,7 @@ i {
 }
 
 .div-login-option {
-  font-family: 'Noto Naskh Arabic', serif;
+  font-family: "Noto Naskh Arabic", serif;
   font-size: 15.2px;
   font-style: normal;
   font-variant: normal;
@@ -291,7 +290,7 @@ i.eyes-click {
 
 .part-header-field-input button {
   height: 30px;
-  background-color: #393E45;
+  background-color: #393e45;
   color: white;
   width: 40px;
   font-weight: 600;
@@ -312,8 +311,6 @@ i.eyes-click {
   margin-top: 35px;
 }
 
-
-
 .op2 {
   border-top: solid 1px #0000005c;
   border-left: solid 1px #0000005c;
@@ -328,7 +325,6 @@ i.eyes-click {
   text-align: center;
   border-bottom: solid 1px #ffffff;
 }
-
 
 .main-content-home-page {
   width: 100%;
@@ -348,15 +344,12 @@ i.eyes-click {
   justify-content: space-between;
 }
 
-
-
 .oline {
   min-width: 123px;
   max-width: 170px;
   height: 25px;
   padding: 2px 4px;
   background-color: #5cb85c;
-  ;
   font-weight: 600;
   font-size: 16px;
   text-align: center;
@@ -375,7 +368,6 @@ i.eyes-click {
   text-align: center;
   padding: 2px 0px;
   background-color: #5cb85c;
-  ;
 }
 
 .users-o {
@@ -465,7 +457,6 @@ i.eyes-click {
 .emojey img {
   width: 20px;
 }
-
 
 .display-name input,
 .display-name span {

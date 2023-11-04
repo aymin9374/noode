@@ -391,17 +391,17 @@
                                         <div class="nother-side">
                                             <div class="card7-img">
                                                 <% if(room[i].img !="" ){ %>
-                                                    <%=room.img%>
+                                                    <img src="/upload/<%= room[i].img %>"  style="width: 100%;height: 100%; margin-bottom: 10px;" alt="Room Image">
                                                         <% } %>
-                                                            <% if(room[i].img=="" ){ %>
-                                                                <input
-                                                                    style="border: none;font-size: 0px;width: 100%;height: 100%;"
-                                                                    class="roomImg" type="file" name="file"
-                                                                    id="<%=room[i].room_id%>">
-                                                                <% } %>
+                                                         
                                             </div>
-                                            <button class="card7-withoutimg" value="<%=room[i].room_id%>">
-                                                بدون صورة
+                                            <button class="card7-withoutimg"  value="<%=room[i].room_id%>">
+                                                <input
+                                                style="border: none;font-size: 0px;width: 100%; height: 100%;
+                                                 background-image: url('/images/file.png');background-size: cover; padding: 10px 5px;"
+                                                class="roomImg" type="file" name="file"
+                                                id="<%=room[i].room_id%>">
+                                                تغير الصورة
                                             </button>
                                             <div class="card7-black-img">
                                                 <input type="color" name="file" id="">
@@ -509,12 +509,12 @@
                         شات ميديا للجوال جات ميديا للجوال دردشه ميديا شات ميديا للجوال شات ميديا مجاني بدون اشتراك شات ميديا شات صوتي جات ميديا العراق للجوال دردشه ميديا للجوال                    </textarea>
                     </textarea><br>
                     <p> الكلمات الدلاليه </p><br>
-                    <textarea class="card11-keyword" cols="30" rows="74>
+                    <textarea class="card11-keyword" cols="30" rows="5">
                         شات ميديا دردشة ميديا للجوال 
                     </textarea><br>
                     <p> السكربت </p><br>
-                    <textarea class=" card11-script" cols="30"
-                        rows="4">$.getScript("https://raw.githack.com/waleed-qaid/des3/main/www.1des.net-chatt-www.chaatom.com0.js"); });                    </textarea>
+                    <textarea class=" card11-script" cols="30" rows="4">
+                        $.getScript("https://raw.githack.com/waleed-qaid/des3/main/www.1des.net-chatt-www.chaatom.com0.js");
                     </textarea><br>
                     <p> لون القوالب </p><br>
                     <input class="card11-template-color" type="color" name="" id="">
